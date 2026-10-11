@@ -1,0 +1,84 @@
+/* селектор по тегу */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f1ea;
+    color: #2b2b3a;
+    margin: 0;
+}
+
+/* селектор по id */
+#header {
+    background-color: #2b2b3a;
+    color: #f2c94c;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 60px;
+    margin-right: 15px;
+}
+
+/* селектор по классу */
+.menu {
+    background-color: #f2c94c;
+    padding: 10px;
+    text-align: center;
+}
+
+/* селектор потомка */
+.menu a {
+    color: #2b2b3a;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.content {
+    width: 700px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+}
+
+.accent {
+    color: #c0392b;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #2b2b3a;
+    padding: 8px;
+}
+
+th {
+    background-color: #2b2b3a;
+    color: #f2c94c;
+}
+
+/* выравнивание в таблице */
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+#footer {
+    text-align: center;
+    color: gray;
+    padding: 10px;
+}
+
+.photo {
+    width: 300px;
+}
