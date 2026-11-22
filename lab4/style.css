@@ -1,0 +1,191 @@
+/* Все цвета сайта задаются здесь. */
+:root {
+    --background: #f4f1ea;
+    --surface: #ffffff;
+    --text: #2b2b3a;
+    --accent: #f2c94c;
+    --highlight: #c0392b;
+    --muted: #666666;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+a { color: var(--text); }
+
+/* Flexbox: шапка, меню, содержимое и подвал идут сверху вниз. */
+.page--flex {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Grid: те же четыре области страницы свитчей. */
+.page--grid {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    min-height: 100vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: var(--text);
+    color: var(--accent);
+}
+
+.header h1 { font-size: 28px; }
+
+.header__logo {
+    display: inline-block;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 8px;
+    color: var(--text);
+    background-color: var(--accent);
+    box-shadow: 0 6px 0 var(--muted);
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 12px;
+    background-color: var(--accent);
+}
+
+.menu__link { text-decoration: none; }
+.menu__link--active { font-weight: bold; text-decoration: underline; }
+.menu__link:hover { text-decoration: underline; }
+
+.content {
+    width: calc(100% - 32px);
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--surface);
+    min-width: 0;
+    animation: page-appear 0.4s ease-out;
+}
+
+.content__accent { color: var(--highlight); }
+
+/* Два блока главной страницы расположены с помощью Flexbox. */
+.intro { display: flex; gap: 24px; }
+.intro__item { flex: 1; }
+
+/* Описание с картинкой и таблица свитчей — две колонки Grid. */
+.switches {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.switches__photo { width: 300px; max-width: 100%; }
+.table-wrapper { overflow-x: auto; min-width: 0; }
+.table { border-collapse: collapse; width: 100%; }
+.table__cell { border: 1px solid var(--text); padding: 8px; }
+.table th { background-color: var(--text); color: var(--accent); }
+.table__cell--left { text-align: left; }
+.table__cell--center { text-align: center; }
+.table__cell--right { text-align: right; }
+
+.form { max-width: 400px; }
+.form__label { display: block; margin-top: 15px; }
+.form__input {
+    width: 100%;
+    padding: 8px;
+    font: inherit;
+    color: var(--text);
+    background-color: var(--surface);
+    border: 1px solid var(--muted);
+}
+
+.form__button {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font: inherit;
+    font-weight: bold;
+    color: var(--text);
+    background-color: var(--accent);
+    border: 1px solid var(--text);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form__button:hover { background-color: var(--background); }
+.footer { margin-top: auto; text-align: center; color: var(--muted); padding: 10px; }
+
+@media (max-width: 700px) {
+    .intro { flex-direction: column; }
+    .switches { grid-template-columns: 1fr; }
+}
+
+
+/* При открытии страницы содержимое плавно появляется снизу. */
+@keyframes page-appear {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Сетка фотографий. Анимация отдельно у каждой карточки. */
+.content--gallery { animation: none; }
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.gallery__item {
+    margin: 0;
+    min-width: 0;
+    animation: page-appear 0.5s ease-out backwards;
+}
+
+/* backwards скрывает карточку на время её задержки. */
+.gallery__item:nth-child(2) { animation-delay: 0.15s; }
+.gallery__item:nth-child(3) { animation-delay: 0.3s; }
+.gallery__item:nth-child(4) { animation-delay: 0.45s; }
+.gallery__item:nth-child(5) { animation-delay: 0.6s; }
+.gallery__item:nth-child(6) { animation-delay: 0.75s; }
+
+.gallery__frame { overflow: hidden; border-radius: 6px; }
+.gallery__photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.gallery__photo:hover { transform: scale(1.06); }
+.gallery__caption { padding: 8px 0; text-align: center; }
+
+@media (max-width: 900px) {
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 550px) {
+    .gallery { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .content, .gallery__item { animation: none; }
+    .gallery__photo { transition: none; }
+    .gallery__photo:hover { transform: none; }
+}
