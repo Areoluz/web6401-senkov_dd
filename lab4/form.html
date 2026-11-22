@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Мои клавиатуры</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="page page--flex">
+    <div class="header">
+        <span class="header__logo" aria-label="Логотип: клавиша К">К</span>
+        <h1>Мои клавиатуры</h1>
+    </div>
+    <nav class="menu">
+        <a class="menu__link" href="index.html">Главная</a>
+        <a class="menu__link" href="keyboards.html">Мои клавиатуры</a>
+        <a class="menu__link" href="switches.html">Архив свитчей</a>
+        <a class="menu__link menu__link--active" href="form.html">Моя сборка</a>
+        <a class="menu__link" href="gallery.html">Галерея</a>
+    </nav>
+    <main class="content">
+        <h2>Моя сборка</h2>
+        <form class="form" id="keyboard-form">
+            <label class="form__label" for="keyboard-name">Клавиатура</label>
+            <input class="form__input" id="keyboard-name" name="keyboardName" type="text" required>
+
+            <label class="form__label" for="switches">Переключатели</label>
+            <input class="form__input" id="switches" name="switches" type="text" required>
+
+            <label class="form__label" for="keycaps">Кейкапы</label>
+            <input class="form__input" id="keycaps" name="keycaps" type="text" required>
+
+            <label class="form__label" for="plate">Плейт</label>
+            <select class="form__input" id="plate" name="plate" required>
+                <option value="">Выберите плейт</option>
+                <option>Alu</option>
+                <option>Alu (Half-plate)</option>
+                <option>POM</option>
+                <option>Acrylic</option>
+                <option>FR4</option>
+                <option>Поликарбонат</option>
+                <option>Без плейта</option>
+            </select>
+
+            <label class="form__label" for="format">Формат</label>
+            <input class="form__input" id="format" name="format" type="text" required>
+
+            <label class="form__label" for="price">Цена, руб.</label>
+            <input class="form__input" id="price" name="price" type="number" min="0" step="1" required>
+
+            <button class="form__button" type="submit">Вывести в консоль</button>
+        </form>
+    </main>
+    <div class="footer">
+        <p>Лабораторная работа №4</p>
+    </div>
+</body>
+</html>
